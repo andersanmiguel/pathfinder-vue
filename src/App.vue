@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <div class="timer" v-if="timer > 0">{{ timer }}</div>
+    <timer :initial="initial_timer" v-on:count_end="end_count"></timer>
+    <p>Ended: {{ count_ended }}</p>
   </div>
 </template>
 
@@ -8,25 +9,17 @@
 export default {
   data: function() {
     return {
-      timer: 5,
-      count: ''
+      initial_timer: 5,
+      count_ended: 'nope'
     };
   },
   watch: {
-    timer: function() {
-      if (this.timer === 0) {
-        clearInterval(this.count);
-      }
-    }
   },
   mounted: function() {
-    this.countDown();
   },
   methods: {
-    countDown: function() {
-      this.count = setInterval(() => {
-        this.timer--;
-      }, 1000);
+    end_count: function() {
+      this.count_ended = 'yep';
     }
   }
 }

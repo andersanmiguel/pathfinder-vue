@@ -1,7 +1,12 @@
 <template>
   <div id="app">
-    <timer :initial="initial_timer" v-on:count_end="end_count"></timer>
-    <p>Ended: {{ count_ended }}</p>
+    <h1>PathFinder</h1>
+    <p>The game, not the robot.</p>
+    <!--<timer :initial="initial_timer" v-on:count_end="end_count"></timer>-->
+
+    <div :class="'board tile'+grid">
+      <div class="tile" v-for="tile in board"></div>
+    </div>
   </div>
 </template>
 
@@ -10,17 +15,36 @@ export default {
   data: function() {
     return {
       initial_timer: 5,
-      count_ended: 'nope'
+      level: 0,
+      initial_grid: 3,
+      board: []
     };
+  },
+  computed: {
+    grid: function() {
+      return this.level + this.initial_grid;
+    }
   },
   watch: {
   },
   mounted: function() {
+    this.make_board();
   },
   methods: {
+    make_board: function() {
+      let board = [];
+      let tiles = this.grid * this.grid;
+      for (let i = 1; i <= tiles; i++) {
+        board.push({ key: i, hint: false, played: false, error: false});
+      }
+      this.board = board;
+    },
     end_count: function() {
-      this.count_ended = 'yep';
+      // Timer end
     }
   }
 }
 </script>
+
+
+<style lang="scss" src="./assets/styles/main.scss"></style>

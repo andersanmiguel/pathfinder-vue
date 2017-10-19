@@ -7,7 +7,7 @@ export default {
   props: ['initial'],
   data: function() {
     return {
-      timer: this.initial,
+      timer: this.initial || 5,
       count: ''
     };
   },

@@ -5,7 +5,7 @@
     <!--<timer :initial="initial_timer" v-on:count_end="end_count"></timer>-->
 
     <div :class="'board tile'+grid">
-      <div class="tile" v-for="tile in board"></div>
+      <tile :key="tile.key" :tile="tile" v-on:clicked="checkTile" v-for="tile in board"></tile>
     </div>
   </div>
 </template>
@@ -38,6 +38,9 @@ export default {
         board.push({ key: i, hint: false, played: false, error: false});
       }
       this.board = board;
+    },
+    checkTile: function(tile_index) {
+      console.log(tile_index);
     },
     end_count: function() {
       // Timer end

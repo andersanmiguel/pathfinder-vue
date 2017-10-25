@@ -11,11 +11,12 @@
 </template>
 
 <script>
+import game from './modules/game'
 export default {
   data: function() {
     return {
       initial_timer: 5,
-      level: 0,
+      level: 2,
       initial_grid: 3,
       board: []
     };

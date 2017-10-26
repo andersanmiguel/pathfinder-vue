@@ -1,3 +1,4 @@
+$high: #F00F59;
 html * {
   box-sizing: border-box;
 }
@@ -11,15 +12,18 @@ body {
   max-width: 900px;
   width: 90%;
   margin: auto;
+  padding-top: 1em;
 }
 
 a {
-  color: #EAB730;
+  color: $high;
   text-decoration: none;
 }
 
-header {
+header, .controls {
   padding: 1em;
+  margin-bottom: 1em;
+  margin-right: 1em;
   float: left;
 }
 
@@ -32,6 +36,8 @@ header {
   width: 90%;
   max-width: 60vh;
   margin: 2% auto;
+
+  float: right;
 
   display: grid;
   grid-column-gap: 5px;
@@ -48,10 +54,30 @@ header {
 .tile {
   background: #ededed;
   font-size: 1.5em;
-  &.hint { background: tomato; }
+  &.hint { background: $high; }
   &:after {
     content: "";
     display: block;
     padding-top: 100%;
   }
+}
+
+.start, .timer {
+  background: $high;
+  color: white;
+  padding: .5em 1em;
+  font-weight: bold;
+  font-size: 1.3em;
+  border: 1px solid transparent;
+  margin-left: 2em;
+}
+
+.timer {
+  float: left;
+  height: 3em;
+  width: 3em;
+  padding: 1em;
+  font-size: 1.5em;
+  border-radius: 50%;
+  display: inline-block;
 }

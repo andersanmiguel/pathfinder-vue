@@ -1,12 +1,19 @@
 <template>
   <div id="app">
-    <h1>PathFinder</h1>
-    <p>The game, not the robot.</p>
-    <!--<timer :initial="initial_timer" v-on:count_end="end_count"></timer>-->
+    <header>
+      <h1>PathFinder</h1>
+      <p>The game, not the robot.</p>
+    </header>
 
     <div :class="'board tile'+grid">
       <tile :key="tile.key" :tile="tile" v-on:clicked="checkTile" v-for="tile in board"></tile>
     </div>
+
+    <div class="controls">
+      <button class="start" v-on:click="startGame">Start Game</button>
+    </div>
+    <timer :initial="initial_timer" v-on:count_end="end_count"></timer>
+
   </div>
 </template>
 
@@ -16,7 +23,7 @@ export default {
   data: function() {
     return {
       initial_timer: 5,
-      level: 2,
+      level: 0,
       initial_grid: 3,
       level_values: [],
       board: []
@@ -45,8 +52,6 @@ export default {
     checkTile: function(tile_index) {
       console.log(tile_index);
     },
-
-
     prepareLevel: function() {
       this.level_values = [];
       let row = this.grid;

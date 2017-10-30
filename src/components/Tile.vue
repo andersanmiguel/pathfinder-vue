@@ -6,6 +6,9 @@ export default {
   props: ['tile'],
   methods: {
     setActive: function() {
+      if (this.tile.played) {
+        return;
+      }
       this.$emit('clicked', this.tile.key);
     }
   }

@@ -55,6 +55,7 @@ header, .controls {
   background: #ededed;
   font-size: 1.5em;
   &.hint { background: $high; }
+  &.played { background: #222; }
   &:after {
     content: "";
     display: block;
